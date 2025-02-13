@@ -1,0 +1,38 @@
+dataset_schema:
+  name: "Amazon Chat Sentiment Dataset"
+  description: "Schema for validating sentiment classification dataset"
+  version: "1.1"
+
+columns:
+  conversation_id:
+    type: "int"
+    nullable: false
+  message:
+    type: "string"
+    nullable: false
+  sentiment:
+    type: "string"
+    nullable: false
+    allowed_values: ["Curious to dive deeper", "Happy", "Neutral", "Surprised", "Disgusted", "Sad", "Fearful", "Angry"]
+
+constraints:
+  - name: "unique_messages"
+    column: "message"
+    rule: "unique"
+    description: "Ensures each message is unique in the dataset"
+
+checks:
+  - name: "check_null_values"
+    columns: ["conversation_id", "message", "sentiment"]
+    rule: "not_null"
+    description: "Ensures all necessary columns have no null values"
+
+  - name: "check_string_lengths"
+    column: "message"
+    rule: "min_length(1)"
+    description: "Ensures messages are not empty"
+
+metadata:
+  author: "Uday"
+  last_updated: "2025-02-13"
+  source: "Amazon Chat Sentiment Dataset"

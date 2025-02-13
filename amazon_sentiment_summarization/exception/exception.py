@@ -1,8 +1,8 @@
 import sys
-from customer_churn.Logging.logger import logging
+from amazon_sentiment_summarization.logging.logger import logging
 
 # 2️⃣ Define Custom Exception Class
-class CustomerChurnException(Exception):  # ✅ Inherits from Exception
+class AmazonSentimentException(Exception):  # ✅ Inherits from Exception
     def __init__(self, error_message, error_details: sys):
         self.error_message = error_message
         _, _, exc_tb = error_details.exc_info()
